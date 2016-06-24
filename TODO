@@ -1,0 +1,59 @@
+
+x add test: create environment with flags, mode, parameter list
+x add test: create database with parameter list
+
+x add test: insert/find/erase
+x add test: insert/find/erase w/ overwrite
+x add test: insert/find/erase w/ duplicates
+x crud tests for integer keys
+
+x cursors - use iterator interface!
+    x functions are implemented
+    x add tests
+
+x recno database: overwrite the key when inserting
+    x for ups_db_insert
+    x add tests for 32bit and 64bit
+    x for ups_cursor_insert
+    x add tests for both
+
+x approx. matching (cursors AND db!)
+    x add tests for db (binary keys)
+    x add tests for cursor (uint16 keys)
+
+x transactions
+    x implement functions
+    x use in insert()
+    x use in find()
+    x use in erase()
+    x use in cursor()
+    x add tests for db-functions
+    x add tests for cursor-functions
+
+x uqi
+    x add tests
+
+x when closing (any) object: make sure we don't segfault afterwards
+    i.e. always check if obj->handle is valid!
+    -> usually not a problem; the C API also verifies the parameters
+
+x use builtin ref counting to make sure that a database is not closed
+    before a cursor
+    x create tests to illustrate the problem
+    x when cursor is created: Z_ADDREF_P(zdb); when cursor is closed:
+        zval_ptr_dtor(&obj->zdb)
+    x when db is created: Z_ADDREF_P(zenv); when database is closed:
+        zval_ptr_dtor(&obj->zenv)
+    x when txn is created: Z_ADDREF_P(zenv); when txn is closed:
+        zval_ptr_dtor(&obj->zenv)
+
+x fix dlopen crash when enabling protobuf in the upscaledb C library
+
+x add documentation (lots!)
+    x recno: key must be (integer) 0!
+    x terminology: iterator -> cursor, value -> record
+
+x samples
+    x db1
+    x uqi1
+

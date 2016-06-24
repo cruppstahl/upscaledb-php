@@ -1,0 +1,13 @@
+// $Id$
+// vim:ft=javascript
+
+ARG_WITH("upscaledb", "upscaledb support", "no");
+
+if (PHP_UPSCALEDB != "no") {
+	if (CHECK_LIB("upscaledb.lib", "upscaledb", PHP_UPSCALEDB) &&
+	    CHECK_HEADER_ADD_INCLUDE("upscaledb.h", "CFLAGS_UPSCALEDB",  PHP_UPSCALEDB+ ";" + PHP_PHP_BUILD + "\\include\\ups")) {
+		EXTENSION("upscaledb", "upscaledb.c", PHP_UPSCALEDB_SHARED, "");
+	} else {
+		WARNING("upscaledb not enabled; libraries and headers not found");
+	}
+}
