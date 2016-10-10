@@ -7,15 +7,16 @@ upscaledb-php
 
 A php driver for upscaledb.
 
-=== Introduction ===
+### Introduction
 
 This is the official PHP driver for upscaledb.
 
-=== Installation ===
+### Installation
 
 Make sure that you installed upscaledb (version 2.2.1 or newer).
 First start the build by running
 
+    phpize
     ./configure
     make
     make test
@@ -24,12 +25,12 @@ For system-wide installation, run (as sudo or root)
 
     make install
 
-=== Usage ===
+### Usage
 
 Please see the samples in the `samples/` directory, and the tests in `tests/`.
 They should provide a good starting point.
 
-=== Licensing ===
+### Licensing
 
 The PHP driver is released under the GNU Public License (GPL) 3.0, just
 like upscaledb. See the file COPYING for more information.
@@ -37,7 +38,7 @@ like upscaledb. See the file COPYING for more information.
 A commercial, proprietary license for upscaledb is available on request.
 See https://upscaledb.com for more information.
 
-=== Contact ===
+### Contact
 
 Author of upscaledb is
     Christoph Rupp
