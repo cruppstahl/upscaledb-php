@@ -727,6 +727,7 @@ PHP_METHOD(Upscaledb, create_db)
   upscaledb_object *obj;
   upscaledb_db_object *db_obj;
   ups_status_t st;
+  int i;
 
   if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "l|lh", &name,
                           &flags, &pht) == FAILURE)
@@ -753,7 +754,7 @@ PHP_METHOD(Upscaledb, create_db)
   db_obj->zenv = getThis();
   Z_ADDREF_P(db_obj->zenv);
 
-  for (int i = 0; i < params_length; i++) {
+  for (i = 0; i < params_length; i++) {
     if (params[i].name == UPS_PARAM_KEY_TYPE)
       db_obj->key_type = (uint32_t)params[i].value;
     else if (params[i].name == UPS_PARAM_RECORD_TYPE)
@@ -781,6 +782,7 @@ PHP_METHOD(Upscaledb, open_db)
   upscaledb_object *obj;
   upscaledb_db_object *db_obj;
   ups_status_t st;
+  int i;
 
   if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "l|lh", &name,
                           &flags, &pht) == FAILURE)
@@ -816,7 +818,7 @@ PHP_METHOD(Upscaledb, open_db)
   db_obj->zenv = getThis();
   Z_ADDREF_P(db_obj->zenv);
 
-  for (int i = 0; i < params_length; i++) {
+  for (i = 0; i < params_length; i++) {
     if (params[i].name == UPS_PARAM_KEY_TYPE)
       db_obj->key_type = (uint32_t)params[i].value;
     else if (params[i].name == UPS_PARAM_RECORD_TYPE)
@@ -932,6 +934,7 @@ PHP_METHOD(Upscaledb, get_database_names)
   uint16_t names[1024];
   int names_length = sizeof(names) / sizeof(uint16_t);
   zval *arr;
+  int i;
 
   if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "")
                   == FAILURE)
@@ -944,7 +947,7 @@ PHP_METHOD(Upscaledb, get_database_names)
 
   MAKE_STD_ZVAL(arr);
   array_init(arr);
-  for (int i = 0; i < names_length; i++)
+  for (i = 0; i < names_length; i++)
     add_next_index_long(arr, names[i]);
 
   RETURN_ZVAL_FAST(arr);
