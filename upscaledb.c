@@ -950,7 +950,7 @@ PHP_METHOD(Upscaledb, get_database_names)
   for (i = 0; i < names_length; i++)
     add_next_index_long(arr, names[i]);
 
-  RETURN_ZVAL_FAST(arr);
+  RETURN_ZVAL(arr);
 }
 
 /*  {{{ proto integer Upscaledb::close(integer $flags = 0)
