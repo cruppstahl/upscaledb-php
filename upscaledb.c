@@ -805,6 +805,8 @@ PHP_METHOD(Upscaledb, open_db)
   // get the database flags
   ups_parameter_t p[] = {
     {UPS_PARAM_FLAGS, 0},
+    {UPS_PARAM_KEY_TYPE, 0},
+    {UPS_PARAM_RECORD_TYPE, 0},
     {0, 0}
   };
   st = ups_db_get_parameters(db, &p[0]);
@@ -818,12 +820,8 @@ PHP_METHOD(Upscaledb, open_db)
   db_obj->zenv = getThis();
   Z_ADDREF_P(db_obj->zenv);
 
-  for (i = 0; i < params_length; i++) {
-    if (params[i].name == UPS_PARAM_KEY_TYPE)
-      db_obj->key_type = (uint32_t)params[i].value;
-    else if (params[i].name == UPS_PARAM_RECORD_TYPE)
-      db_obj->record_type = (uint32_t)params[i].value;
-  }
+  db_obj->key_type = (uint32_t) p[1].value;
+  db_obj->record_type = (uint32_t) p[2].value;
 
   if (db_obj->flags & UPS_RECORD_NUMBER32)
     db_obj->key_type = UPS_TYPE_UINT32;
@@ -941,7 +939,7 @@ PHP_METHOD(Upscaledb, get_database_names)
     RETURN_LONG(UPS_INV_PARAMETER);
 
   obj = (upscaledb_object *)zend_object_store_get_object(getThis() TSRMLS_CC);
-  ups_status_t st = ups_env_get_database_names(obj->env, names, &names_length);
+  ups_status_t st = ups_env_get_database_names(obj->env, names, (uint32_t *) &names_length);
   if (st)
     RETURN_LONG(st);
 
