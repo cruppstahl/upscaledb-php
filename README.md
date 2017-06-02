@@ -32,11 +32,8 @@ They should provide a good starting point.
 
 ### Licensing
 
-The PHP driver is released under the GNU Public License (GPL) 3.0, just
+The PHP driver is released under the Apache Public License (APL) 2.0, just
 like upscaledb. See the file COPYING for more information.
-
-A commercial, proprietary license for upscaledb is available on request.
-See https://upscaledb.com for more information.
 
 ### Contact
 

@@ -24,7 +24,7 @@ http://pear.php.net/dtd/package-2.0.xsd">
     <release>beta</release>
     <api>beta</api>
   </stability>
-  <license uri="http://www.gnu.org/licenses/gpl.html">GPL</license>
+  <license uri="http://www.apache.org/licenses/">APL</license>
   <notes>
 - Initial revision
 
@@ -36,7 +36,6 @@ http://pear.php.net/dtd/package-2.0.xsd">
       <file name="php_upscaledb.h" role="src" />
       <file name="COPYING" role="doc" />
       <file name="TODO" role="doc" />
-      <file name="LICENSE.foss-exceptions" role="doc" />
       <file name="README.md" role="doc" />
       <dir name="tests">
 		<file name="001-basic.phpt" role="test" />
